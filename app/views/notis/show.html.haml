@@ -1,0 +1,36 @@
+#noti_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.panel-heading.pin_image
+				= image_tag @noti.image.url(:medium)
+			.panel-body
+				%h1= @noti.title
+				= sanitize @noti.description
+				- if user_signed_in?
+					%p= @noti.timeout
+
+
+			.panel-footer
+				.row
+					.col-md-6
+						%p.user
+						Sumitted by
+						= @noti.user.email
+					.col-md-6
+						.btn-group.pull-right
+							- if user_signed_in?
+								= link_to "Back", root_path
+								= link_to "Edit", edit_noti_path
+								= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
+								= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
+							- else
+								= link_to "Back", root_path
+
+
+// :title => @noti.title, :description => @noti.description, :timeout => @noti.timeout)
+
+
+/ (@noti.id, :title => @noti.title, :description => @noti.description , :timeout => @noti.timeout, :image => @noti.image)
+//%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type => "thanks") %>
+//\%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type =&gt; "thanks") %&gt;
+

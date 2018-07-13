@@ -1,0 +1,2 @@
+module ResendnotiHelper
+end

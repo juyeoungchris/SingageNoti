@@ -1,0 +1,30 @@
+= simple_form_for @noti, html: { multipart: true} do |f|
+	- if @noti.errors.any?
+		#errors
+			%h2
+			= pluralize(@noti.errors.count, "error")
+			prevented this Noti from saving
+			%ul
+				- @noti.errors.full_messages.each do |msg|
+					%li= msg
+
+	.form-group
+		= f.input :image, input_html: { class: 'form-control' } 
+
+	.form-group
+		= f.input :title, input_html: { class: 'form-control' }
+	.form-group
+		//////= f.label :description , input_html: { class: 'form-control' }
+		= f.hidden_field :description, id: :post_body
+		%trix-editor{:input => "post_body"}
+
+
+
+
+	.form-group
+		= f.input :timeout, input: { class: 'form-control' }
+		
+
+
+	= f.button :submit, class: "btn btn-primary"
+
