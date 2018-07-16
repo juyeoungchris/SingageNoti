@@ -19,7 +19,7 @@ class ResendnotiController < ApplicationController
 	    http = Net::HTTP.new(uri.host, uri.port)
 	    req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
 	    # req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: @noti.description }}.to_json
-	    req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: "http://localhost:3000/notis/58" }}.to_json
+	    req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: @noti.description }}.to_json
 	    logger.debug "[ResendControllermid] res #{__LINE__} , #{req.body}"
 	    res = http.request(req)
 	    #http.use_ssl = true
