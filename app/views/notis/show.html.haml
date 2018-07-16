@@ -6,7 +6,6 @@
 			.panel-body
 				%h1= @noti.title
 				= sanitize @noti.description
-				= "http://13.209.193.243:3000/notis/" + @noti.id.to_s
 				- if user_signed_in?
 					%p= @noti.timeout
 
@@ -24,8 +23,9 @@
 								= link_to "Edit", edit_noti_path
 								= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
 								= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
-							- else
 								= link_to "Back", root_path
+							- else
+								
 
 
 // :title => @noti.title, :description => @noti.description, :timeout => @noti.timeout)
