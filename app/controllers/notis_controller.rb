@@ -6,6 +6,7 @@ class NotisController < ApplicationController
 	require 'json'
 
 	def index
+		@render = true
 		@notis = Noti.all.order("created_at DESC")
 	end
 
@@ -36,11 +37,14 @@ class NotisController < ApplicationController
 	end
 
 	def show
+		## render layout: 'application', except: :show ## by Max
 		if current_user
-			render layout: true
+			@render = true
 		else
-			render layout: false
+			@render = false
 		end
+
+		
 	end
 
 	def edit
