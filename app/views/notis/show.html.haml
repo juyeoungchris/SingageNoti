@@ -1,33 +1,63 @@
 #noti_show.row
-	.row-xs-10.row-xs-offset-2
-		.panel.panel-default
+
+	// = image_tag @noti.image.url(:medium) , style: 'width:auto;'
+
+	%h1= @noti.title
+	= sanitize @noti.description
+	- if user_signed_in?
+		%p= @noti.timeout
+
+
+	- if user_signed_in?
+		.panel-footer
 			.row
-				.panel-heading.pin_image
-					.col-xs-6
-						= image_tag @noti.image.url(:medium) , style: 'height:30%;width:auto;'
-				.panel-body
-					.col-xs-6
-						%h1= @noti.title
-						= sanitize @noti.description
-						- if user_signed_in?
-							%p= @noti.timeout
+				.col-sm-6
+					%p.user
+					Sumitted by
+					= @noti.user.email
+				.col-sm-6
+					.btn-group.pull-right
+						= link_to "Back", root_path
+						= link_to "Edit", edit_noti_path
+						= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
+						= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
+						= link_to "Back", root_path
+
+										
 
 
-			.panel-footer
-				.row
-					.col-sm-6
-						%p.user
-						Sumitted by
-						= @noti.user.email
-					.col-sm-6
-						.btn-group.pull-right
-							- if user_signed_in?
-								= link_to "Back", root_path
-								= link_to "Edit", edit_noti_path
-								= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
-								= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
-								= link_to "Back", root_path
-							- else
+
+
+/ #noti_show.row
+/ 	.row-xs-10.row-xs-offset-2
+/ 		.panel.panel-default
+/ 			.row
+/ 				.panel-heading.pin_image
+/ 					.col-xs-6
+/ 						= image_tag @noti.image.url(:medium) , style: 'width:auto;'
+/ 				.panel-body
+/ 					.col-xs-16
+/ 						%h1= @noti.title
+/ 						= sanitize @noti.description
+/ 						- if user_signed_in?
+/ 							%p= @noti.timeout
+
+
+/ 			.panel-footer
+/ 				.row
+/ 					.col-sm-6
+/ 						%p.user
+/ 						Sumitted by
+/ 						= @noti.user.email
+/ 					.col-sm-6
+/ 						.btn-group.pull-right
+/ 							- if user_signed_in?
+/ 								= link_to "Back", root_path
+/ 								= link_to "Edit", edit_noti_path
+/ 								= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
+/ 								= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
+/ 								= link_to "Back", root_path
+/ 							- else
 										
 
 
