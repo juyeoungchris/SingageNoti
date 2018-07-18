@@ -49,13 +49,18 @@ nav {
 	}
 }
 
-container {
-	
+#container {
+	margin: 0 0 0 0;
+	width: 100%;
+	height: 100%;
+	padding-left: 1px;
+	padding-right: 1px;
 }
 
 #noti {
   margin: 0 auto;
   width: 100%;
+  height: 100%;
   .box {
 	  margin: 10px;
 	  width: 350px;
@@ -93,6 +98,9 @@ container {
 }
 
 #noti_show {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
 	.panel-heading {
 		padding: 0;
 	}
@@ -117,12 +125,18 @@ container {
 	}
 	.panel-footer {
 		padding: 20px 35px;
+		height: 10%;
 		p {
 			margin: 0;
 		}
 		.user {
 			padding-top: 8px;
 		}
+	}
+	.row{
+		margin: 0 auto;
+		width: 100%;
+		height: 100%;
 	}
 }
 

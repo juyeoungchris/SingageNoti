@@ -1,12 +1,12 @@
 #noti_show.row
-	.row-xs-10.row-xs-offset-1
+	.row-xs-10.row-xs-offset-2
 		.panel.panel-default
 			.row
 				.panel-heading.pin_image
 					.col-xs-6
 						= image_tag @noti.image.url(:medium) , style: 'height:30%;width:auto;'
 				.panel-body
-					.col-xs-16
+					.col-xs-6
 						%h1= @noti.title
 						= sanitize @noti.description
 						- if user_signed_in?
