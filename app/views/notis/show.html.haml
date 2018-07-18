@@ -1,33 +1,34 @@
 #noti_show.row
-	// .col-md-6.col-md-offset-3
-	.panel.panel-default
-		.panel-heading.pin_image
-			.col-md-6
-				= image_tag @noti.image.url(:medium) , style: 'height:50%;width:auto;'
-
-		.panel-body
-			%h1= @noti.title
-			= sanitize @noti.description
-			- if user_signed_in?
-				%p= @noti.timeout
-
-
-		.panel-footer
+	.row-xs-10.row-xs-offset-1
+		.panel.panel-default
 			.row
-				.col-md-6
-					%p.user
-					Sumitted by
-					= @noti.user.email
-				.col-md-6
-					.btn-group.pull-right
+				.panel-heading.pin_image
+					.col-xs-6
+						= image_tag @noti.image.url(:medium) , style: 'height:30%;width:auto;'
+				.panel-body
+					.col-xs-16
+						%h1= @noti.title
+						= sanitize @noti.description
 						- if user_signed_in?
-							= link_to "Back", root_path
-							= link_to "Edit", edit_noti_path
-							= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
-							= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
-							= link_to "Back", root_path
-						- else
-									
+							%p= @noti.timeout
+
+
+			.panel-footer
+				.row
+					.col-sm-6
+						%p.user
+						Sumitted by
+						= @noti.user.email
+					.col-sm-6
+						.btn-group.pull-right
+							- if user_signed_in?
+								= link_to "Back", root_path
+								= link_to "Edit", edit_noti_path
+								= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
+								= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
+								= link_to "Back", root_path
+							- else
+										
 
 
 // :title => @noti.title, :description => @noti.description, :timeout => @noti.timeout)
