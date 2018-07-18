@@ -14,9 +14,9 @@
 	.form-group
 		= f.input :title, input_html: { class: 'form-control' }
 	.form-group
-		//////= f.label :description , input_html: { class: 'form-control' }
 		= f.hidden_field :description, id: :post_body
 		%trix-editor{:input => "post_body"}
+		%input#post_body{:type => "hidden", :value => "<div><span style=\"color:red\">RED</span> <span style=\"font-family: &quot;Comic Sans MS&quot;;\">world</span></div>"}/
 
 
 

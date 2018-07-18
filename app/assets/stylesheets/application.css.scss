@@ -17,12 +17,7 @@
  *= require froala_style.min.css
  */
 //*= require trix
-/*
- @import "froala_editor.min";
- @import "froala_style.min";
- @import "font-awesome-sprockets";
- @import "font-awesome";
- */
+
 
 
 @import "bootstrap-sprockets";
@@ -55,6 +50,7 @@ nav {
 	height: 100%;
 	padding-left: 1px;
 	padding-right: 1px;
+	background: #FFFFFF;
 }
 
 #noti {

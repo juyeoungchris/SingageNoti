@@ -3,7 +3,8 @@
 	// = image_tag @noti.image.url(:medium) , style: 'width:auto;'
 
 	%h1= @noti.title
-	= sanitize @noti.description
+	= @noti.description.html_safe
+	
 	- if user_signed_in?
 		%p= @noti.timeout
 
