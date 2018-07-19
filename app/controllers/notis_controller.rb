@@ -1,7 +1,7 @@
 class NotisController < ApplicationController
-	before_action :find_noti, only: [:show, :edit, :update, :destroy, :send, :write]
+	before_action :find_noti,:check_login, only: [:show, :edit, :update, :destroy, :send, :write]
 
-
+	@render = true
 	require 'net/http'
 	require 'json'
 
@@ -11,10 +11,12 @@ class NotisController < ApplicationController
 	end
 
 	def new
+		@render = true
 		@noti = current_user.notis.build
 	end
 
 	def create
+		@render = true
 		@noti = current_user.notis.build(noti_params)
 		
 		if @noti.save
@@ -38,16 +40,11 @@ class NotisController < ApplicationController
 
 	def show
 		## render layout: 'application', except: :show ## by Max
-		if current_user
-			@render = true
-		else
-			@render = false
-		end
-
 		
 	end
 
 	def edit
+		@render = true
 		
 		
 	end
@@ -91,7 +88,6 @@ class NotisController < ApplicationController
 	private
 
 	def noti_params
-		logger.debug "[LLLLLLLLLLLLLLparams] res #{__LINE__} #{:noti}"
 		params.require(:noti).permit(:title, :description, :timeout, :image)
 	end
 
@@ -99,34 +95,14 @@ class NotisController < ApplicationController
 		@noti = Noti.find(params[:id])
 	end
 
-	def standard_http_request
-	  uri = URI.parse("http://www.google.com")
-
-	  # Shortcut
-	  response = Net::HTTP.get_response(uri)
-
-	  # Will print response.body
-	  Net::HTTP.get_print(uri)
-
-	  # Full
-	  http = Net::HTTP.new(uri.host, uri.port)
-	  response = http.request(Net::HTTP::Get.new(uri.request_uri))  
+	def check_login
+		logger.debug "[before log-in check ] res #{__LINE__} , #{current_user}"
+		if current_user
+			@render = true
+		else
+			@render = false
+		end
 	end
 
-	def make_post_req  
-    require 'net/http'
-    require 'json'
-    begin
-        uri = URI('http://13.125.195.134:3000/api/noti')
-        http = Net::HTTP.new(uri.host, uri.port)
-        req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json',  
-          'Authorization' => ''})
-        req.body = {title: "test", body: "body"}.to_json
-        res = http.request(req)
-        puts "response #{res.body}"
-        puts JSON.parse(res.body)
-    rescue => e
-        puts "failed #{e}"
-    end
-  end
+	
 end
