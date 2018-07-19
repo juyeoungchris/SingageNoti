@@ -35,10 +35,19 @@ Trix.config.textAttributes.blue = {
   inheritable: true
  }
 
+ Trix.config.textAttributes.yellow = { 
+	style: { backgroundcolor: "yellow" },
+  parser: function(element) {
+  	return element.style.color === "yellow"
+  },
+  inheritable: true
+ }
+
 addEventListener("trix-initialize", function(event) {  
   var buttonHTML = '<button type="button" data-trix-attribute="red">RED</button>'
 
   buttonHTML += '<button type="button" data-trix-attribute="blue">BLUE</button>'
+  buttonHTML += '<button type="button" data-trix-attribute="yellow">BG</button>'
 
 	event.target.toolbarElement.
   	querySelector(".button_group.text_tools").

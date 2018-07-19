@@ -1,6 +1,7 @@
 #noti.transitions-enabled
 	- @notis.each do |noti|
 		.box.panel.panel-default
-			= link_to (image_tag noti.image.url), noti
+			// = link_to (image_tag noti.image.url), noti
+			= noti.description.html_safe
 			.panel-body
 				%h2= link_to noti.title , noti
