@@ -15,7 +15,7 @@
 		= f.input :title, input_html: { class: 'form-control' }
 	.form-group
 		= f.hidden_field :description, id: :post_body
-		%trix-editor{:input => "post_body"}
+		%trix-editor{:input => "post_body", :style => "background-image: url(#{@noti.image.url(:medium)}); background-size: contain; background-repeat: no-repeat" }
 		%input#post_body{:type => "hidden", :value => "<div><span style=\"color:red\">RED</span> <span style=\"font-family: &quot;Comic Sans MS&quot;;\">world</span></div>"}/
 
 

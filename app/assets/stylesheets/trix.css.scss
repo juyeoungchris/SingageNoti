@@ -9,7 +9,9 @@ trix-editor {
   margin: 0;
   padding: 0.4em 0.6em;
   min-height: 5em;
-  outline: none; }
+  outline: none; 
+  height: 500px;
+  width: 800px}
 trix-toolbar * {
   box-sizing: border-box; }
 trix-toolbar .button_row {

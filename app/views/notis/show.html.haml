@@ -3,34 +3,32 @@
 	// = image_tag @noti.image.url(:medium) , style: 'width:auto;'
 	.row-xs-12.row-xs-offset-0s
 		.panel.panel-default
-			.panel-body
+			.panel-body{:style => "background-image: url(#{@noti.image.url(:medium)})"}
 				.row-xs-10
-					%h1= @noti.title
+
+					//%h1= @noti.title
 					= @noti.description.html_safe
 
 					- if user_signed_in?
 						%p= @noti.timeout
 
-				.row-xs-2
-					- if user_signed_in?
-						.panel-footer
-							.row
-								.col-sm-6
-									%p.user
-									Sumitted by
-									= @noti.user.email
-								.col-sm-6
-									.btn-group.pull-right
-										= link_to "Back", root_path
-										= link_to "Edit", edit_noti_path
-										= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
-										= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
-										= link_to "Back", root_path
-
-										
+			.row-xs-2
+				- if user_signed_in?
+					.panel-footer
+						.row
+							.col-sm-6
+								%p.user
+								Submitted by
+								= @noti.user.email
+							.col-sm-6
+								.btn-group.pull-right
+									= link_to "Back", root_path
+									= link_to "Edit", edit_noti_path
+									= link_to "Delete", noti_path, method: :delete, date: { confirm: "Are you sure?"}
+									= link_to "Send", resendnoti_write_path(@noti,:id => @noti.id)
 
 
-
+						
 
 / #noti_show.row
 / 	.row-xs-10.row-xs-offset-2
