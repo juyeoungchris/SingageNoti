@@ -10,8 +10,8 @@ trix-editor {
   padding: 0.4em 0.6em;
   min-height: 5em;
   outline: none; 
-  height: 500px;
-  width: 800px}
+  height: 715px;
+  width: 970px}
 trix-toolbar * {
   box-sizing: border-box; }
 trix-toolbar .button_row {
@@ -183,7 +183,7 @@ trix-editor .attachment button.remove {
     left: calc(50% - 0.8em);
     width: 1.8em;
     height: 1.8em;
-    line-height: 1.8em;
+    line-height: 1.9em;
     border-radius: 50%;
     text-indent: -9999px;
     background-color: #fff;
@@ -231,10 +231,10 @@ trix-editor .attachment progress {
   opacity: 0.9; }
 @charset "UTF-8";
 .trix-content {
-  line-height: 1.5; }
+  line-height: 1.9; }
   .trix-content h1 {
     font-size: 1.2em;
-    line-height: 1.2;
+    line-height: 1.9;
     margin: 0; }
   .trix-content blockquote {
     margin: 0 0 0 0.3em;
@@ -278,10 +278,10 @@ trix-editor .attachment progress {
       .trix-content .attachment.attachment-preview .caption {
         color: #666;
         font-size: 0.9em;
-        line-height: 1.2; }
+        line-height: 1.9; }
     .trix-content .attachment.attachment-file {
       color: #333;
-      line-height: 1;
+      line-height: 1.9;
       margin: 0 2px 2px 0;
       padding: 0.4em 1em;
       border: 1px solid #bbb;
