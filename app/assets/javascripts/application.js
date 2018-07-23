@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require masonry/jquery.masonry
 //= require froala_editor.min.js
 //= require bootstrap-sprockets
 //= require rails-ujs
