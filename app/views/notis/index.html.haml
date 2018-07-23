@@ -4,6 +4,6 @@
 	- @notis.each do |noti|
 		
 		.box.panel.panel-default{:style => "background-image: url(#{ noti.image.url(:medium)}); background-size: contain; background-repeat: no-repeat" }
-			= link_to noti.description.html_safe, noti
+			// = link_to noti.description.html_safe, noti
 			%a.overlay{:href => "/notis/" + "#{noti.id}"}
 			
