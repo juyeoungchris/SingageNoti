@@ -26,7 +26,7 @@ class NotisController < ApplicationController
 			uri = URI('http://13.125.195.134:3000/api/noti')
 		    http = Net::HTTP.new(uri.host, uri.port)
 		    req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
-		    req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: "http://13.209.193.243:3000/notis/" + @noti.id.to_s}}.to_json
+		    req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: "http://13.125.195.134:3000/api/noti/" + @noti.id.to_s}}.to_json
 		    res = http.request(req)
 		    http.use_ssl = true
 		    puts "response #{res.body}"
