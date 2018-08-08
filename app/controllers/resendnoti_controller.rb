@@ -3,10 +3,12 @@ class ResendnotiController < ApplicationController
 	require 'net/http'
 	require 'json'
 
+
 	def write
 		# @noti = params.require(:noti).permit(:title, :description, :timeout)
 		logger.debug "[ResendControllerwrite] res #{__LINE__}"
 
+		server_encoding = "ISO-8859-1"
 		# @noti = Noti.new(params[:noti])
 
 		# redirect_to @noti, notice: "Successfully created new notification"
@@ -21,7 +23,7 @@ class ResendnotiController < ApplicationController
 	    # req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: @noti.description }}.to_json
 	    req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: "http://13.124.141.239:3000/notis/" + @noti.id.to_s}}.to_json
 		  # req.body = {to: "userId", data:{ type: "11" , scheduleTimeUTC: "0", timeoutSec: @noti.timeout.to_s , title: @noti.title , body: "http://13.124.141.239/:3000/notis/" + "6"}}.to_json
-
+		req.body.force_encoding(server_encoding).encode("UTF-8")
 	    logger.debug "[ResendControllermid] res #{__LINE__} , #{req.body}"
 	    res = http.request(req)
 	    #http.use_ssl = true
