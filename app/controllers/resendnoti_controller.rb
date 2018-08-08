@@ -11,10 +11,10 @@ class ResendnotiController < ApplicationController
 
 		# redirect_to @noti, notice: "Successfully created new notification"
 			
-		logger.debug "[ResendControllersend] #{__LINE__}, #{@noti}"
-		logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.title}"
-		logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.description}"
-		logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.timeout}"
+		# logger.debug "[ResendControllersend] #{__LINE__}, #{@noti}"
+		# logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.title}"
+		# logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.description}"
+		# logger.debug "[ResendControllersend] #{__LINE__}, #{@noti.timeout}"
 		uri = URI('http://13.125.195.134:3000/api/noti')
 	    http = Net::HTTP.new(uri.host, uri.port)
 	    req = Net::HTTP::Post.new(uri.path, 'Content-Type' => 'application/json')
